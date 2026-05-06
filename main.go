@@ -99,7 +99,7 @@ func (a *Agent) executeTool(id, name string, input json.RawMessage) anthropic.Co
 		}
 	}
 	if !found {
-		return anthropic.NewToolResultBlock(id, "tool note found", true)
+		return anthropic.NewToolResultBlock(id, "tool not found", true)
 	}
 
 	fmt.Printf("\u001b[92mtool \u001b[0m: %s(%s)\n", name, input)
@@ -251,7 +251,7 @@ If the file specified with path doesn't exist, it will be created.
 
 type EditFileInput struct {
 	Path   string `json:"path" jsonschema_description:"The path to the file"`
-	OldStr string `json:"old_str" jsonschema_description:"Text to search for - must match exactly and must have exactly one match",`
+	OldStr string `json:"old_str" jsonschema_description:"Text to search for - must match exactly and must have exactly one match"`
 	NewStr string `json:"new_str" jsonschema_description:"Text to replace old_str with"`
 }
 
